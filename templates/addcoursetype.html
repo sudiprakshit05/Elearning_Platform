@@ -22,9 +22,9 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample" method="post" action="/addcoursetype">
+                    <h4 class="card-title">Admin form</h4>
+                    <p class="card-description">  </p>
+                    <form class="forms-sample" method="post" action="/addcoursetype" enctype="multipart/form-data">
                       {% csrf_token %}
                       <div class="form-group">
                         <label for="exampleInputName1">Enter course Type</label>
@@ -36,85 +36,38 @@
                       </div>
                       
                       
+                      
                     
                       <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                      
                     </form>
                   </div>
                 </div>
               </div>
 			  <div class="row">
-              <!-- <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Basic Table</h4>
-                    <p class="card-description"> Add class <code>.table</code>
-                    </p>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Profile</th>
-                          <th>VatNo.</th>
-                          <th>Created</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>53275531</td>
-                          <td>12 May 2017</td>
-                          <td><label class="badge badge-danger">Pending</label></td>
-                        </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>53275532</td>
-                          <td>15 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>53275533</td>
-                          <td>14 May 2017</td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>53275534</td>
-                          <td>16 May 2017</td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td>20 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div> -->
+
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">course type Table</h4>
+                    <h4 class="card-title">Admin Table</h4>
                   
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th> logo </th>
-                          <th> course type </th>
-                          <th> Edit </th>
-                          <th> Delete </th>
+                          
+                          <th>logo</th>
+                          <th> Coursetype </th>
+                          <th> Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
-                        {% for i in admin %}
+                        {% for i in coursetype %}
                           <tr>
                                 <td><img src="media/{{i.file}}" alt="" width="100px" height="100px"></td>
-                                <td>{{i.coursetype}}</td>
-                                <td><a href="edit/{{i.id}}">edit</a></td>
-                                <td><a href="delete/{{i.id}}">Delete</a></td>
+                                <td>{{i.name}}</td>
+          
+                                <td><a href="addcoursetype_edit/{{i.id}}">edit</a></td>
+                                <td><a href="addcoursetype_delete/{{i.id}}">Delete</a></td>
                                 
                             </tr>
                             {% endfor %}
