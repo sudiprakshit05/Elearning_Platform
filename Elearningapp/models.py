@@ -11,3 +11,9 @@ class Elearningadmin(models.Model):
     city=models.CharField(max_length=50)
     def __str__(self):
         return self.name
+
+class coursetype(models.Model):
+    name=models.CharField(max_length=50)
+    file=models.ImageField(upload_to='image',default='')
+    def _str_(self):
+        return self.name

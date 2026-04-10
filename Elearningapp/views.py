@@ -73,4 +73,31 @@ def adminlogin(request):
         return render(request,'adminlogin.html')
 
 def addcoursetype(request):
-    return render(request,'addcoursetype.html')  
+    coursetype1=coursetype.objects.all()
+    if(request.method=='POST'):
+        name=request.POST['name']
+        file=request.FILES['file']
+        coursetype1=coursetype(name=name,file=file)
+        coursetype1.save()
+        messages.success(request,'added successfully')
+        return redirect('/addcoursetype')
+    else:    
+        return render(request,'addcoursetype.html',{'coursetype':coursetype1})
+
+def addcoursetype_delete(request,id): 
+    coursetype1=coursetype.objects.get(id=id)  
+    coursetype1.delete()  
+    return redirect('/addcoursetype')
+
+def addcoursetype_edit(request,id):
+    coursetype1=coursetype.objects.get(id=id)
+    if(request.method=="POST"):
+        name=request.POST['name']
+        file=request.FILES['file']
+        coursetype1.name=name
+        coursetype1.file=file
+        coursetype1.save()
+        messages.success(request,'edited successfull')
+        return redirect('/addcoursetype')
+    else:
+        return render(request,'addcoursetype_edit.html',{'coursetype':coursetype1})
