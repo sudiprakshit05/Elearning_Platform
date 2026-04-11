@@ -17,3 +17,10 @@ class coursetype(models.Model):
     file=models.ImageField(upload_to='image',default='')
     def _str_(self):
         return self.name
+
+class course(models.Model):
+    coursetypes=models.CharField(max_length=50,default='')
+    name=models.CharField(max_length=50)
+    file=models.ImageField(upload_to='image',default='')
+    def _str_(self):
+        return self.name

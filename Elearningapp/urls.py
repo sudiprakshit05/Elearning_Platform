@@ -10,6 +10,9 @@ urlpatterns=[
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('addcoursetype',views.addcoursetype,name='addcoursetype'),
     path('addcoursetype_edit/<int:id>',views.addcoursetype_edit,name='addcoursetype_edit'),
-    path('addcoursetype_delete/<int:id>',views.addcoursetype_delete,name='addcoursetype_delete')
+    path('addcoursetype_delete/<int:id>',views.addcoursetype_delete,name='addcoursetype_delete'),
+    path('addcourse',views.addcourse,name='addcourse'),
+    path('addcourse_edit/<int:id>',views.addcourse_edit,name='addcourse_edit'),
+    path('addcourse_delete/<int:id>',views.addcourse_delete,name='addcourse_delete')
 ]
 

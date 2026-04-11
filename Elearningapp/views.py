@@ -101,3 +101,37 @@ def addcoursetype_edit(request,id):
         return redirect('/addcoursetype')
     else:
         return render(request,'addcoursetype_edit.html',{'coursetype':coursetype1})
+
+def addcourse(request):
+    course1=course.objects.all()
+    coursetype1=coursetype.objects.all()
+    if(request.method=='POST'):
+        coursetypes=request.POST['coursetypes']
+        name=request.POST['name']
+        file=request.FILES['file']
+        course1=course(coursetypes=coursetypes,name=name,file=file)
+        course1.save()
+        messages.success(request,'added successfully')
+        return redirect('/addcourse')
+    else:    
+        return render(request,'addcourse.html',{'coursetype':coursetype1,'course':course1})
+
+def addcourse_edit(request,id):
+    course1=course.objects.get(id=id)
+    coursetype1=coursetype.objects.all()
+    if(request.method=="POST"):
+        coursetypes=request.POST['coursetypes']
+        name=request.POST['name']
+        file=request.FILES['file']
+        course1.name=name
+        course1.file=file
+        course1.save()
+        messages.success(request,'edited successfull')
+        return redirect('/addcourse')
+    else:
+        return render(request,'addcourse_edit.html',{'coursetype':coursetype1,'course':course1})
+
+def addcourse_delete(request,id): 
+    course1=course.objects.get(id=id)  
+    course1.delete()  
+    return redirect('/addcourse')
