@@ -26,6 +26,7 @@ urlpatterns=[
     path('addheadlines_delete/<int:id>',views.addheadlines_delete,name='addheadlines_delete'),
     path('about',views.about,name='about'),
     path('contact',views.contact,name='contact'),
-    path('join_now',views.join_now,name='join_now')
+    path('join_now',views.join_now,name='join_now'),
+    path('user_login',views.user_login,name='user_login')
 ]
 

@@ -239,3 +239,20 @@ def join_now(request):
         return redirect('/join_now')
     else:
         return render(request,'join_now.html')    
+
+def user_login(request): 
+    if request.session.has_key('email'):
+        del request.session['email']  #loging out process
+    if(request.method=="POST"):
+        email=request.POST['email']
+        password=request.POST['password']
+        usercheck=elearning_users.objects.filter(email=email,password=password)
+        if(usercheck):
+            request.session['email']=email
+            messages.success(request,'login successfully')
+            return redirect('/')
+        else:
+            messages.success(request,'wrong password or username')
+            return redirect('/user_login')
+    else:
+        return render(request,'user_login.html')

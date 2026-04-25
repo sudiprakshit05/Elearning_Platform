@@ -47,7 +47,7 @@ class elearning_users(models.Model):
     email=models.EmailField(max_length=100)
     phone=models.IntegerField(default=0)
     password=models.CharField(max_length=50)
-    confirm_password=models.CharField(max_length=50)   
+    confirm_password=models.CharField(max_length=50,default='')   
     school_college=models.CharField(max_length=100,default='')
     address=models.CharField(max_length=100,default='')
     def _str_(self):
