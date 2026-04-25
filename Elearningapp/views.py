@@ -197,10 +197,16 @@ def teacherdashboard(request):
         messages.success(request,'please login!')
         return redirect('/teacherslogin')        
 def website_index(request):
+    ename=None
+    if request.session.has_key('email'):
+         eid=request.session['email']
+         user=elearning_users.objects.get(email=eid)
+         ename=user.name
+           #loging out process
     admin=headlines.objects.all()
     Coursetype=coursetype.objects.all()
     course1=course.objects.all()
-    return render(request,'website_index.html',{'admin':admin,'coursetype':Coursetype,'course':course1}) 
+    return render(request,'website_index.html',{'admin':admin,'coursetype':Coursetype,'course':course1,'ename':ename}) 
 
 def addheadlines(request):
     admin=headlines.objects.all()
